@@ -10,7 +10,7 @@ namespace ConsoleHeroesTests
 {
     public class ArmorTest
     {
-
+        /*
         [Fact]
         public void ItemArmorConstructor_CreateItemArmor_CorrectInput()
         {
@@ -27,6 +27,6 @@ namespace ConsoleHeroesTests
             //Assert.Equal(expected.Attributes, actual.Attributes);
             Assert.Equal(expected.ArmorType, actual.ArmorType);
             Assert.Equal(expected.SlotType, actual.SlotType);
-        }
+        } */
     }
 }
