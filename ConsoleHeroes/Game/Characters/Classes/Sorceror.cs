@@ -1,45 +1,39 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
-using ConsoleHeroes.Game.Output;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
-    internal class Assassin : Hero
+    internal class Sorceror : Hero
     {
         private const int _startingHealth = 100;
         private const int _startingStrength = 2;
-        private const int _startingDexterity = 6;
-        private const int _startingIntelligence = 1;
+        private const int _startingDexterity = 1;
+        private const int _startingIntelligence = 6;
 
         private const int _strengthGain = 1;
-        private const int _dexterityGain = 4;
-        private const int _intelligenceGain = 1;
+        private const int _dexterityGain = 2;
+        private const int _intelligenceGain = 5;
 
-        public Assassin(string name)
+        public Sorceror(string name) : base(name)
         {
-            ClassName = "Assassin";
+            ClassName = "Sorceror";
             Experience.Level = 1;
             Health = _startingHealth;
             Attributes = new Attributes(_startingStrength, _startingDexterity, _startingIntelligence);
             AttributesGain = new Attributes(_strengthGain, _dexterityGain, _intelligenceGain);
 
             AllowedArmorTypes = new ArmorType[] {
-                ArmorType.CLOTH_ARMOR,
-                ArmorType.LEATHER_ARMOR,
-                ArmorType.LATEX_ARMOR };
+                ArmorType.CLOTH_ARMOR };
             AllowedWeaponTypes = new WeaponType[] {
-                WeaponType.SCISSORS_WEAPON,
-                WeaponType.RAZOR_WEAPON };
+                WeaponType.WAND_WEAPON,
+                WeaponType.STAFF_WEAPON };
         }
-
-
-        //public override double Defend(double incomingDamage)
-        //{
-        //    double damageAfterMitigation = incomingDamage * 0.9;
-        //    Health -= damageAfterMitigation;
-        //    return damageAfterMitigation;
-        //}
 
         public override void DeathQuote()
         {
@@ -58,8 +52,7 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
 
         public override void VictoryQuote()
         {
-            TextController.writeText(30, ConsoleColor.White, ConsoleColor.Black,
-                                  "So dark. Perfect.");
+            throw new NotImplementedException();
         }
     }
 }

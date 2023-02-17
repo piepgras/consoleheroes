@@ -1,5 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;
@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
-    internal class Amazon : Hero
+    internal class Barber : Hero
     {
-        private const int _startingHealth = 80;
-        private const int _startingStrength = 1;
-        private const int _startingDexterity = 7;
+        private const int _startingHealth = 150;
+        private const int _startingStrength = 5;
+        private const int _startingDexterity = 2;
         private const int _startingIntelligence = 1;
 
-        private const int _strengthGain = 1;
-        private const int _dexterityGain = 5;
+        private const int _strengthGain = 3;
+        private const int _dexterityGain = 2;
         private const int _intelligenceGain = 1;
 
-        public Amazon(string name)
+        public Barber(string name) : base(name)
         {
-            ClassName = "Amazon";
+            ClassName = "Barber";
             Experience.Level = 1;
             Health = _startingHealth;
             Attributes = new Attributes(_startingStrength, _startingDexterity, _startingIntelligence);
@@ -30,13 +30,17 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
 
             AllowedArmorTypes = new ArmorType[] {
                 ArmorType.CLOTH_ARMOR,
-                ArmorType.LEATHER_ARMOR};
+                ArmorType.LEATHER_ARMOR,
+                ArmorType.MAIL_ARMOR,
+                ArmorType.PLATE_ARMOR };
             AllowedWeaponTypes = new WeaponType[] {
-                WeaponType.BOW_WEAPON,
                 WeaponType.AXE_WEAPON,
+                WeaponType.SCISSORS_WEAPON,
+                WeaponType.SWORD_WEAPON,
                 WeaponType.STAFF_WEAPON,
-                WeaponType.SWORD_WEAPON };
+                WeaponType.HAMMER_WEAPON };
         }
+
 
         public override void DeathQuote()
         {
@@ -57,5 +61,6 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
         {
             throw new NotImplementedException();
         }
+
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;
@@ -7,22 +7,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
-    internal class Druid : Hero
+    internal class Amazon : Hero
     {
-        private const int _startingHealth = 120;
-        private const int _startingStrength = 2;
-        private const int _startingDexterity = 4;
-        private const int _startingIntelligence = 4;
+        private const int _startingHealth = 80;
+        private const int _startingStrength = 1;
+        private const int _startingDexterity = 7;
+        private const int _startingIntelligence = 1;
 
-        private const int _strengthGain = 2;
-        private const int _dexterityGain = 3;
-        private const int _intelligenceGain = 2;
+        private const int _strengthGain = 1;
+        private const int _dexterityGain = 5;
+        private const int _intelligenceGain = 1;
 
-        public Druid(string name)
+        public Amazon(string name) : base(name)
         {
-            ClassName = "Druid";
+            ClassName = "Amazon";
             Experience.Level = 1;
             Health = _startingHealth;
             Attributes = new Attributes(_startingStrength, _startingDexterity, _startingIntelligence);
@@ -30,12 +30,12 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
 
             AllowedArmorTypes = new ArmorType[] {
                 ArmorType.CLOTH_ARMOR,
-                ArmorType.LEATHER_ARMOR };
+                ArmorType.LEATHER_ARMOR};
             AllowedWeaponTypes = new WeaponType[] {
-                WeaponType.WAND_WEAPON,
+                WeaponType.BOW_WEAPON,
+                WeaponType.AXE_WEAPON,
                 WeaponType.STAFF_WEAPON,
-                WeaponType.HAMMER_WEAPON,
-                WeaponType.BOW_WEAPON};
+                WeaponType.SWORD_WEAPON };
         }
 
         public override void DeathQuote()

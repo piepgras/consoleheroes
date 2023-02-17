@@ -23,6 +23,11 @@ namespace ConsoleHeroes.Game.Abstracts
         public Attributes Attributes { get; set; } = null!;
         public Attributes AttributesGain { get; set; } = null!;
 
+        public CharacterBase(string name)
+        {
+            Name = name;
+        }
+
         public double Defend(double incomingDamage)
         {
             double damageAfterMitigation = incomingDamage * 0.9;

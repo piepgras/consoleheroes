@@ -1,4 +1,5 @@
-﻿using ConsoleHeroes.Game.Equipment;
+﻿using ConsoleHeroes.Game.Enums;
+using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Exceptions;
 using ConsoleHeroes.Game.Modifiers;
 using ConsoleHeroes.Game.Output;
@@ -15,6 +16,11 @@ namespace ConsoleHeroes.Game.Abstracts
 
         public string ClassName { get { return _className; } set { _className = value; } }
         public Inventory Inventory { get { return _inventory; } }
+
+        public Hero(string name) : base(name)
+        {
+
+        }
 
         public ArmorType[] AllowedArmorTypes
         {
@@ -49,7 +55,7 @@ namespace ConsoleHeroes.Game.Abstracts
             else return new Attributes(0, 0, 0);
         }
 
-        public void IsItemAllowed(Item item)
+        public Exception IsItemAllowed(Item item)
         {
             bool allowed = false;
             if (item is ItemArmor)
@@ -90,11 +96,19 @@ namespace ConsoleHeroes.Game.Abstracts
                 else
                 {
                     _inventory.Equip(item);
+                    return new Exception();
                 }
-
             }
-            catch (InvalidArmorException) { Narrator.EquipNotAllowed(item); }
-            catch (InvalidWeaponException) { Narrator.EquipNotAllowed(item); }
+            catch (InvalidArmorException)
+            {
+                Narrator.EquipNotAllowed(item); 
+                return new InvalidArmorException("You can't equip this armor!");
+            }
+            catch (InvalidWeaponException)
+            { 
+                Narrator.EquipNotAllowed(item);
+                return new InvalidWeaponException("You can't equip this weapon!");
+            }
         }
 
         public void LevelUpAttributes()

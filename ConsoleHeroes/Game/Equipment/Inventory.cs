@@ -1,4 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Equipment.Exceptions;
 
 using ConsoleHeroes.Game.Output;

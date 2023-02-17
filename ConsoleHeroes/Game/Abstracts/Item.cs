@@ -1,4 +1,4 @@
-﻿using ConsoleHeroes.Game.Equipment;
+﻿using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;

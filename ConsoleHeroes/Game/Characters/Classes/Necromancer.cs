@@ -1,5 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;
@@ -7,33 +7,37 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
-    internal class Sorceror : Hero
+    internal class Necromancer : Hero
     {
-        private const int _startingHealth = 100;
+        private const int _startingHealth = 130;
         private const int _startingStrength = 2;
-        private const int _startingDexterity = 1;
-        private const int _startingIntelligence = 6;
+        private const int _startingDexterity = 2;
+        private const int _startingIntelligence = 3;
 
-        private const int _strengthGain = 1;
-        private const int _dexterityGain = 2;
-        private const int _intelligenceGain = 5;
+        private const int _strengthGain = 2;
+        private const int _dexterityGain = 1;
+        private const int _intelligenceGain = 3;
 
-        public Sorceror(string name)
+        public Necromancer(string name) : base(name)
         {
-            ClassName = "Sorceror";
+            ClassName = "Necromancer";
             Experience.Level = 1;
             Health = _startingHealth;
             Attributes = new Attributes(_startingStrength, _startingDexterity, _startingIntelligence);
             AttributesGain = new Attributes(_strengthGain, _dexterityGain, _intelligenceGain);
 
             AllowedArmorTypes = new ArmorType[] {
-                ArmorType.CLOTH_ARMOR };
+                ArmorType.CLOTH_ARMOR,
+                ArmorType.LEATHER_ARMOR,
+                ArmorType.MAIL_ARMOR };
             AllowedWeaponTypes = new WeaponType[] {
                 WeaponType.WAND_WEAPON,
-                WeaponType.STAFF_WEAPON };
+                WeaponType.STAFF_WEAPON,
+                WeaponType.HAMMER_WEAPON };
         }
+
 
         public override void DeathQuote()
         {

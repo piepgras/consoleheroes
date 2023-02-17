@@ -9,13 +9,9 @@ namespace ConsoleHeroes.Game.Characters
 {
     internal class TargetDummy : Foe
     {
-        public TargetDummy(string name)
+        public TargetDummy(string name) : base(name)
         {
-            Name = name;
             Health = 100;
         }
-
-
-
     }
 }

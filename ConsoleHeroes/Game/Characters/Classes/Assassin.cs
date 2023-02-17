@@ -1,28 +1,24 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using ConsoleHeroes.Game.Output;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
-    internal class Barber : Hero
+    internal class Assassin : Hero
     {
-        private const int _startingHealth = 150;
-        private const int _startingStrength = 5;
-        private const int _startingDexterity = 2;
+        private const int _startingHealth = 100;
+        private const int _startingStrength = 2;
+        private const int _startingDexterity = 6;
         private const int _startingIntelligence = 1;
 
-        private const int _strengthGain = 3;
-        private const int _dexterityGain = 2;
+        private const int _strengthGain = 1;
+        private const int _dexterityGain = 4;
         private const int _intelligenceGain = 1;
 
-        public Barber(string name)
+        public Assassin(string name) : base(name)
         {
-            ClassName = "Barber";
+            ClassName = "Assassin";
             Experience.Level = 1;
             Health = _startingHealth;
             Attributes = new Attributes(_startingStrength, _startingDexterity, _startingIntelligence);
@@ -31,16 +27,19 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
             AllowedArmorTypes = new ArmorType[] {
                 ArmorType.CLOTH_ARMOR,
                 ArmorType.LEATHER_ARMOR,
-                ArmorType.MAIL_ARMOR,
-                ArmorType.PLATE_ARMOR };
+                ArmorType.LATEX_ARMOR };
             AllowedWeaponTypes = new WeaponType[] {
-                WeaponType.AXE_WEAPON,
                 WeaponType.SCISSORS_WEAPON,
-                WeaponType.SWORD_WEAPON,
-                WeaponType.STAFF_WEAPON,
-                WeaponType.HAMMER_WEAPON };
+                WeaponType.RAZOR_WEAPON };
         }
 
+
+        //public override double Defend(double incomingDamage)
+        //{
+        //    double damageAfterMitigation = incomingDamage * 0.9;
+        //    Health -= damageAfterMitigation;
+        //    return damageAfterMitigation;
+        //}
 
         public override void DeathQuote()
         {
@@ -59,8 +58,8 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
 
         public override void VictoryQuote()
         {
-            throw new NotImplementedException();
+            TextController.writeText(30, ConsoleColor.White, ConsoleColor.Black,
+                                  "So dark. Perfect.");
         }
-
     }
 }

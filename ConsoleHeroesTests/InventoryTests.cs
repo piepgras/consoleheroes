@@ -1,5 +1,6 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
 using ConsoleHeroes.Game.Characters;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Equipment.Exceptions;
 using System.Drawing;

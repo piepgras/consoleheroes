@@ -5,6 +5,10 @@
 
         private int _experienceWorth;
 
+        public Foe(string name) : base(name)
+        {
+        }
+
         public override void DeathQuote()
         {
             throw new NotImplementedException();

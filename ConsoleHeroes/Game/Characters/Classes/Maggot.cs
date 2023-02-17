@@ -1,5 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Equipment;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;
@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Characters.Player.Classes
+namespace ConsoleHeroes.Game.Characters.Classes
 {
     internal class Maggot : Hero
     {
@@ -20,7 +20,7 @@ namespace ConsoleHeroes.Game.Characters.Player.Classes
         private const int _dexterityGain = 0;
         private const int _intelligenceGain = 1;
 
-        public Maggot(string name)
+        public Maggot(string name) : base(name)
         {
             ClassName = "Maggot";
             Experience.Level = 1;

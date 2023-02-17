@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ConsoleHeroes.Game.Equipment
+namespace ConsoleHeroes.Game.Enums
 {
     public enum WeaponType
     {

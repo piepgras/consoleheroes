@@ -1,4 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 
 namespace ConsoleHeroes.Game.Equipment

@@ -1,4 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
+using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
 using ConsoleHeroes.Game.Output;
 
@@ -79,7 +80,7 @@ namespace ConsoleHeroes.Game.Equipment
 
             // CHESTS
                 //CLOTH
-                new ItemArmor("Novice Rob", 1, 1, new Attributes(0,0,1), ArmorType.CLOTH_ARMOR, SlotType.CHEST_SLOT ),
+                new ItemArmor("Novice Robe", 1, 1, new Attributes(0,0,1), ArmorType.CLOTH_ARMOR, SlotType.CHEST_SLOT ),
                 new ItemArmor("Learned Robe", 11, 42, new Attributes(12,41,21), ArmorType.CLOTH_ARMOR, SlotType.CHEST_SLOT ),
                 new ItemArmor("Wizard Robe", 42, 152, new Attributes(0,124,0), ArmorType.CLOTH_ARMOR, SlotType.CHEST_SLOT ),
                 

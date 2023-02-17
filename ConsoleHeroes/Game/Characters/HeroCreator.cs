@@ -1,5 +1,5 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
-using ConsoleHeroes.Game.Characters.Player.Classes;
+using ConsoleHeroes.Game.Characters.Classes;
 using ConsoleHeroes.Game.Output;
 using System;
 using System.Collections.Generic;
