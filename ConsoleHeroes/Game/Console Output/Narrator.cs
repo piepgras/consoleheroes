@@ -427,9 +427,9 @@ namespace ConsoleHeroes.Game.Output
             TextController.writeText(0, ConsoleColor.Red, ConsoleColor.White,
             $"");
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
-            $" 1 : Gain 100XP  |   2 : Loot Random Item  |  3 : Equip   ");
+            $" 1 : Gain 100XP  |      2 : Level Up       |  3 : Equip   ");
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
-            $"                 |   9 : No Cheat          |              ");
+            $" 4 : Random Item |                         |  9 : No Cheat");
 
             return TextController.readText("CHEAT #: ");
         }
@@ -486,7 +486,7 @@ namespace ConsoleHeroes.Game.Output
             {
                 ItemWeapon item = (ItemWeapon)displayItem;
                 TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
-                $"{item.Name}: lvl:{item.RequiredLevel}" +
+                $"{item.Name}: LVL REQ.: {item.RequiredLevel}" +
                 $"DAMAGE: {item.Damage}");
                 TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
                 $"");

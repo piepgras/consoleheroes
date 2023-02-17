@@ -98,13 +98,19 @@ namespace ConsoleHeroes.Game
                     GameDecisions();
                     break;
                 case "2":
-                    //_hero.gainExperience(100);
+                    if (_hero.Experience.gainExperience(_hero.Experience.ExperienceNeededToLevel)) _hero.LevelUpAttributes();
                     GameDecisions();
                     break;
                 case "3":
                     Narrator.ItemList();
                     string itemName = TextController.readText("FORCE EQUIP ITEM: ");
                     _hero.Inventory.Equip(ItemDatabase.findItem(itemName));
+                    GameDecisions();
+                    break;
+                case "4":
+                    Item item = ItemDatabase.findRandomItemWithChance(100);
+                    Narrator.DisplayItem(item);
+                    _hero.Inventory.AddItemToBackpack(item);
                     GameDecisions();
                     break;
 
