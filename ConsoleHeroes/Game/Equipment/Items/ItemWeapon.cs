@@ -4,6 +4,10 @@ using ConsoleHeroes.Game.Modifiers;
 
 namespace ConsoleHeroes.Game.Equipment
 {
+    /// <summary>
+    /// Inherits from item, is responsible for all the
+    /// fields relevant to Weapon Items.
+    /// </summary>
     internal class ItemWeapon : Item
     {
         private WeaponType _weaponType;

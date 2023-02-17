@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 // The Character Interface ICharacter defines all abstract
 // base functionality for all characters in the game:
 // heroes & foes.
-namespace ConsoleHeroes.Game.Abstracts
+namespace ConsoleHeroes.Game.Abstracts.Interfaces
 {
     internal interface ICharacter
     {

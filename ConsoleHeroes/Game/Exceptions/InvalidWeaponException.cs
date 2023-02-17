@@ -2,6 +2,10 @@
 
 namespace ConsoleHeroes.Game.Exceptions
 {
+    /// <summary>
+    /// Exception used for when hero tries to equip
+    /// an invalid weapon.
+    /// </summary>
     [Serializable]
     internal class InvalidWeaponException : Exception
     {
@@ -10,14 +14,6 @@ namespace ConsoleHeroes.Game.Exceptions
         }
 
         public InvalidWeaponException(string? message) : base(message)
-        {
-        }
-
-        public InvalidWeaponException(string? message, Exception? innerException) : base(message, innerException)
-        {
-        }
-
-        protected InvalidWeaponException(SerializationInfo info, StreamingContext context) : base(info, context)
         {
         }
     }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Enums
 {
+    /// <summary>
+    /// Enum for all the Armor Types.
+    /// </summary>
     public enum ArmorType
     {
         CLOTH_ARMOR,

@@ -5,6 +5,13 @@ using ConsoleHeroes.Game.Output;
 
 namespace ConsoleHeroes.Game.Equipment
 {
+    /// <summary>
+    /// Singleton responsible for holding all items for the game.
+    /// Also responsible for finding items (by name) and returning.
+    /// Also capable of selecting random items by chance, for loot drops.
+    /// Throws item not found exception.
+    /// </summary>
+    /// <throws>Exception</throws>
     internal sealed class ItemDatabase
     {
         private static ItemDatabase instance = null!;
@@ -95,7 +102,7 @@ namespace ConsoleHeroes.Game.Equipment
                 new ItemArmor("Hunter Loot", 42, 152, new Attributes(0,124,0), ArmorType.MAIL_ARMOR, SlotType.CHEST_SLOT ),
 
                 // PLATE
-                new ItemArmor("Store Patter", 1, 21, new Attributes(0,0,0), ArmorType.PLATE_ARMOR, SlotType.CHEST_SLOT ),
+                new ItemArmor("Store Patter Igen", 1, 21, new Attributes(0,0,0), ArmorType.PLATE_ARMOR, SlotType.CHEST_SLOT ),
                 new ItemArmor("Plate Jacket", 11, 42, new Attributes(12,41,21), ArmorType.PLATE_ARMOR, SlotType.CHEST_SLOT ),
                 new ItemArmor("Why Did I make So Many Items", 42, 152, new Attributes(0,124,0), ArmorType.PLATE_ARMOR, SlotType.CHEST_SLOT ),
 

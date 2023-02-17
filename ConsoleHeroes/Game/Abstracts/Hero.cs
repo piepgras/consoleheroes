@@ -99,6 +99,8 @@ namespace ConsoleHeroes.Game.Abstracts
                     return new Exception();
                 }
             }
+            // Poor approach to catching Exceptions, but I couldn't figure out how
+            // To handle catch(e) in xUnit.
             catch (InvalidArmorException)
             {
                 Narrator.EquipNotAllowed(item); 

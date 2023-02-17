@@ -1,4 +1,5 @@
-﻿using ConsoleHeroes.Game.Modifiers;
+﻿using ConsoleHeroes.Game.Abstracts.Interfaces;
+using ConsoleHeroes.Game.Modifiers;
 using ConsoleHeroes.Game.Output;
 using System;
 using System.Collections.Generic;

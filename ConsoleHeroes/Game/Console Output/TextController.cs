@@ -1,12 +1,14 @@
 ﻿namespace ConsoleHeroes.Game.Output
 {
+    /// <summary>
+    /// Static class responsible for printing and formatting all text given by the Narrator class
+    /// </summary>
     internal static class TextController
     {
         static int textCenter = 36;
         static int windowSize = 72;
         static string fancyLeftMargin = "|>";
         static string fancyRightMargin = "<|";
-
 
         public static void writeText(int speed, ConsoleColor foregroundColor, ConsoleColor backgroundColor, string str)
         {

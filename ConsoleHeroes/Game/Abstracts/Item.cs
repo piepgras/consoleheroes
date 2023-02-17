@@ -1,13 +1,12 @@
 ﻿using ConsoleHeroes.Game.Enums;
 using ConsoleHeroes.Game.Modifiers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Abstracts
 {
+    /// <summary>
+    /// Base abstract Item, responsible for
+    /// the base of all Armor and Weapons
+    /// </summary>
     internal abstract class Item
     {
         private string _name;
@@ -20,8 +19,6 @@ namespace ConsoleHeroes.Game.Abstracts
         public SlotType SlotType { get { return _slotType; } set { _slotType = value; } }
         public Attributes Attributes { get { return _attributes; } set { _attributes = value; } }
         public int RequiredLevel { get { return _requiredLevel; } set { _requiredLevel = value; } }
-
-        public Item() { }
 
         public Item(string name, int requiredLevel, Attributes attributes)
         {
@@ -36,6 +33,19 @@ namespace ConsoleHeroes.Game.Abstracts
             _requiredLevel = requiredLevel;
             _attributes = attributes;
             _slotType = slotType;
+        }
+
+        public override bool Equals(object? obj)
+        {
+            return obj is Item item &&
+                   _name == item._name &&
+                   EqualityComparer<Attributes>.Default.Equals(_attributes, item._attributes) &&
+                   _requiredLevel == item._requiredLevel &&
+                   _slotType == item._slotType &&
+                   Name == item.Name &&
+                   SlotType == item.SlotType &&
+                   EqualityComparer<Attributes>.Default.Equals(Attributes, item.Attributes) &&
+                   RequiredLevel == item.RequiredLevel;
         }
     }
 }

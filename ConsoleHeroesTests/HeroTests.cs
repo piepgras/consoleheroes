@@ -154,10 +154,8 @@ namespace ConsoleHeroesTests
             ItemArmor item = (ItemArmor)ItemDatabase.findItem("Store Patter");
 
             // Act & Assert
-            Exception thrownException = Assert.Throws<InvalidArmorException>(() => sorceror.IsItemAllowed(item));
+            Exception thrownException = sorceror.IsItemAllowed(item);
             Assert.Equal("You can't equip this armor!", thrownException.Message);
-
-            
         }
 
         [Fact]
@@ -168,8 +166,8 @@ namespace ConsoleHeroesTests
             Item item = ItemDatabase.findItem("Excalibur");
 
             // Act & Assert
-            Exception test = sorceror.IsItemAllowed(item);
-            Assert.Equal("You can't equip this weapon!", test.Message);
+            Exception thrownException = sorceror.IsItemAllowed(item);
+            Assert.Equal("You can't equip this weapon!", thrownException.Message);
         }
         #endregion
     }

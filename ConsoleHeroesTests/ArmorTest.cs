@@ -1,32 +1,28 @@
-﻿using ConsoleHeroes.Game.Equipment;
+﻿using ConsoleHeroes.Game.Abstracts;
+using ConsoleHeroes.Game.Enums;
+using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Modifiers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace ConsoleHeroesTests
 {
     public class ArmorTest
     {
-        /*
+
+        /// <summary>
+        /// Creates Item and checks equivalence to what was found in database.
+        /// </summary>
         [Fact]
-        public void ItemArmorConstructor_CreateItemArmor_CorrectInput()
+        public void ItemArmorConstructor_IsSameAsDatabase_CorrectArmor()
         {
             // Arrange
-            ItemArmor expected = (ItemArmor)ItemDatabase.findItem("Robe of the Void");
+            Item expected = new ItemArmor("Rubber Suit", 1, 21, new Attributes(0, 0, 0), ArmorType.PLATE_ARMOR, SlotType.CHEST_SLOT);
 
             // Act
-            ItemArmor actual = new ItemArmor("Robe of the Void", 57, 96, new Attributes(14, 0, 0), ArmorType.CLOTH_ARMOR, SlotType.CHEST_SLOT);
+            Item actual = ItemDatabase.findItem("Rubber Suit");
 
             // Assert
-            Assert.Equal(expected.Name, actual.Name);
-            Assert.Equal(expected.RequiredLevel, actual.RequiredLevel);
-            Assert.Equal(expected.Armor, actual.Armor);
-            //Assert.Equal(expected.Attributes, actual.Attributes);
-            Assert.Equal(expected.ArmorType, actual.ArmorType);
-            Assert.Equal(expected.SlotType, actual.SlotType);
-        } */
+            Assert.True(expected.Equals(actual));
+        }
     }
 }

@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Output
 {
+    /// <summary>
+    /// Static Class responsible for the Display of all game events.
+    /// </summary>
     internal static class Narrator
     {
         private static string _heroName = null!;

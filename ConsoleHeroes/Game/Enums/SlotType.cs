@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Enums
 {
+    /// <summary>
+    /// Enum for all the slot types.
+    /// </summary>
     public enum SlotType
     {
         HEAD_SLOT,

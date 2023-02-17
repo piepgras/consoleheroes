@@ -1,7 +1,10 @@
-﻿using ConsoleHeroes.Game.Output;
-
-namespace ConsoleHeroes.Game.Modifiers
+﻿namespace ConsoleHeroes.Game.Modifiers
 {
+    /// <summary>
+    /// Class responsible for holding given attributes.
+    /// overrides equals, + and - operators for measuring equivalence
+    /// and quick calculation of heroes attributes.
+    /// </summary>
     internal class Attributes
     {
         private int _strength;

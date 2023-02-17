@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Equipment
 {
+    /// <summary>
+    /// Inherits from item, is responsible for all the
+    /// fields relevant to Armor Items.
+    /// </summary>
     internal class ItemArmor : Item
     {
         private ArmorType _armorType;

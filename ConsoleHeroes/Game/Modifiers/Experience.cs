@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Modifiers
 {
+    /// <summary>
+    /// Class responsible for holding experience points and level.
+    /// Adds experience and increments levels when experience threshold is met.
+    /// </summary>
     internal class Experience
     {
         private const int _levelExperienceMultiplier = 2;

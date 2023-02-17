@@ -6,9 +6,12 @@ using ConsoleHeroes.Game.Output;
 using System.Runtime.CompilerServices;
 
 [assembly: InternalsVisibleTo("ConsoleHeroesTests")]
-
 namespace ConsoleHeroes.Game
 {
+    /// <summary>
+    /// "main" class responsible for App init and handling of all
+    /// game directing and input.
+    /// </summary>
     internal class GameLoop
     {
         // Game Constants

@@ -6,6 +6,15 @@ using ConsoleHeroes.Game.Output;
 
 namespace ConsoleHeroes.Game.Equipment
 {
+    /// <summary>
+    /// Class responsible for all Inventory functionality.
+    /// Holds 5 slots for the items equipped by heros.
+    /// Holds 5 additional slots to represent the heros backpack.
+    /// Also responsible for adding items to the backpack and equipping
+    /// items after they've cleared by the individual hero's allowed item types.
+    /// Throws Exception on negative backpack size and if backpack is full.
+    /// </summary>
+    /// <throws>InventoryException</throws>
     internal class Inventory
     {
         // Equipped Items
@@ -102,10 +111,5 @@ namespace ConsoleHeroes.Game.Equipment
                 return false;
             }
         }
-
-        //private bool IsItemAllowed(Item item)
-        //{
-
-        //}
     }
 }

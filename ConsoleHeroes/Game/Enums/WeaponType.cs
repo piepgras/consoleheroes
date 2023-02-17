@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace ConsoleHeroes.Game.Enums
 {
+    // Enum for all the weapon types.
     public enum WeaponType
     {
         AXE_WEAPON,
