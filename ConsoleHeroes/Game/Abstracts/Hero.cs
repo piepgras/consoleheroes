@@ -118,6 +118,34 @@ namespace ConsoleHeroes.Game.Abstracts
             Attributes += AttributesGain;
         }
 
+        public override double Attack()
+        {
+            ItemWeapon weapon;
+            double weaponDamage = 1;
+            if (Inventory.EquippedItems[SlotType.WEAPON_SLOT] != null)
+            {
+                weapon = (ItemWeapon)Inventory.EquippedItems[SlotType.WEAPON_SLOT];
+                weaponDamage = weapon.Damage;
+            }
+
+            if(_className == "Barber" || _className == "Paladin" || _className == "Maggot")
+                return Math.Round((weaponDamage * (1 + (getTotalAttributes().Strength / 100.0))), 2);
+
+            if (_className == "Amazon" || _className == "Assassin")
+                return Math.Round((weaponDamage * (1 + (getTotalAttributes().Dexterity / 100.0))), 2);
+
+            if (_className == "Sorceror" || _className == "Necromancer" || _className == "Druid")
+                return Math.Round((weaponDamage * (1 + (getTotalAttributes().Intelligence / 100.0))), 2);
+
+
+            return 0;
+        }
+
+        public override double Defend(double incomingDamage)
+        {
+            throw new NotImplementedException();
+        }
+
         // Fun
 
         public abstract void TakeDamageQuote();

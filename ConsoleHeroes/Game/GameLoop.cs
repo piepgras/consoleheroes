@@ -28,22 +28,19 @@ namespace ConsoleHeroes.Game
                 GameLoop.GameIntro();
             }
         }
+
         internal static void GameIntro()
         {
-            //Console.BackgroundColor = ConsoleColor.Black;
-            //Narrator.Intro();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Narrator.Intro();
             GameStart();
         }
 
         internal static void GameStart()
         {
-            //Console.BackgroundColor = ConsoleColor.Black;
-            //Narrator.Welcome();
-            //_heroName = HeroCreator.PickName();
-            //_heroClass = HeroCreator.PickClass();
-            //_hero.VictoryQuote();
-            _hero = HeroCreator.CreateHero(_heroName, "Assassin");
-            _hero.Display();
+            Console.BackgroundColor = ConsoleColor.Black;
+            Narrator.Welcome();
+            _hero = HeroCreator.CreateHero(HeroCreator.PickName(), HeroCreator.PickClass());
 
             GameDecisions();
         }
@@ -73,6 +70,7 @@ namespace ConsoleHeroes.Game
                     GameDecisions();
                     break;
                 case "4":
+                    _hero.Inventory.MoveItemToBackpackFromEquipped();
                     GameDecisions();
                     break;
                 case "5":
@@ -104,6 +102,13 @@ namespace ConsoleHeroes.Game
                     GameDecisions();
                     break;
                 case "3":
+                    Narrator.ItemList();
+                    string itemName = TextController.readText("FORCE EQUIP ITEM: ");
+                    _hero.Inventory.Equip(ItemDatabase.findItem(itemName));
+                    GameDecisions();
+                    break;
+
+                case "9":
                     GameDecisions();
                     break;
                 default:
@@ -139,16 +144,15 @@ namespace ConsoleHeroes.Game
 
         private static void Battle(Foe foe)
         {
-            while (isBattling)
-            {
-                foe.Defend(_hero.Attack(foe, 52));
-                _hero.Defend(foe.Attack(_hero, 1));
+            //while (isBattling)
+            //{
 
-                if (!foe.isAlive)
-                {
-                    isBattling = false;
-                }
-            }
+
+            //    if (!foe.isAlive)
+            //    {
+            //        isBattling = false;
+            //    }
+            //}
 
             GameDecisions();
         }

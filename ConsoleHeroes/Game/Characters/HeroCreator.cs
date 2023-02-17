@@ -45,7 +45,7 @@ namespace ConsoleHeroes.Game.Characters
                     return new Druid(heroName);
                 case "maggot":
                     return new Maggot(heroName);
-                case "necromencer":
+                case "necromancer":
                     return new Necromancer(heroName);
                 case "paladin":
                     return new Paladin(heroName);

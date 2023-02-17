@@ -1,5 +1,6 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
 using ConsoleHeroes.Game.Enums;
+using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Modifiers;
 using ConsoleHeroes.Game.Output;
 
@@ -30,7 +31,8 @@ namespace ConsoleHeroes.Game.Characters.Classes
                 ArmorType.LATEX_ARMOR };
             AllowedWeaponTypes = new WeaponType[] {
                 WeaponType.SCISSORS_WEAPON,
-                WeaponType.RAZOR_WEAPON };
+                WeaponType.RAZOR_WEAPON,
+                WeaponType.SWORD_WEAPON };
         }
 
 

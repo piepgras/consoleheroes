@@ -29,9 +29,9 @@
 
         public Attributes(int strength, int dexterity, int intelligence)
         {
-            _strength = strength;
-            _dexterity = dexterity;
-            _intelligence = intelligence;
+            Strength = strength;
+            Dexterity = dexterity;
+            Intelligence = intelligence;
 
         }
 

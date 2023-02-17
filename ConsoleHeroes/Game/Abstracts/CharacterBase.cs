@@ -29,25 +29,10 @@ namespace ConsoleHeroes.Game.Abstracts
             Name = name;
         }
 
-        public double Defend(double incomingDamage)
-        {
-            double damageAfterMitigation = incomingDamage * 0.9;
-            Health -= damageAfterMitigation;
-            Narrator.TakeDamage(Name, damageAfterMitigation);
-            if (Health <= 0)
-            {
-                isAlive = false;
-            }
-            return damageAfterMitigation;
-        }
 
         // Abstracts from ICharacter:
-        public double Attack(CharacterBase target, double damage)
-        {
-            Narrator.DealDamage(Name, target, damage);
-            return damage;
-        }
-        //public abstract double Defend(double incomingDamage);
+        public abstract double Attack();
+        public abstract double Defend(double incomingDamage);
         public abstract void Die(string reason);
         public abstract void DeathQuote();
 

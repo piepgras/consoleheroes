@@ -76,18 +76,55 @@ namespace ConsoleHeroes.Game.Equipment
             return false;
         }
 
-        public void MoveItemToBackpackFromEquipped(Item itemToMove)
+        public void MoveItemToBackpackFromEquipped()
         {
+            Narrator.DisplayOccupiedEquipmentSlots(this);
+            string from = TextController.readText("Write # to move : ");
+            Narrator.DisplayEmptyBackpackSlots(this);
+            string to = TextController.readText("Free slot # :");
             try
             {
-                //if (){
+                SlotType SLOT;
 
-                //}
+                if (from == "1") {
+                    SLOT = SlotType.HEAD_SLOT;
+                    Item item = _equippedItems[SLOT];
+                    _backpack[int.Parse(to)] = item;
+                    _equippedItems[SLOT] = null!;
+                }
+
+                if (from == "2") {
+                    SLOT = SlotType.CHEST_SLOT;
+                    Item item = _equippedItems[SLOT];
+                    _backpack[int.Parse(to)] = item;
+                    _equippedItems[SLOT] = null!;
+                }
+                if (from == "3") {
+                    SLOT = SlotType.LEGS_SLOT;
+                    Item item = _equippedItems[SLOT];
+                    _backpack[int.Parse(to)] = item;
+                    _equippedItems[SLOT] = null!;
+                }
+                if (from == "4") {
+
+                    SLOT = SlotType.FEET_SLOT;
+                    Item item = _equippedItems[SLOT];
+                    _backpack[int.Parse(to)] = item;
+                    _equippedItems[SLOT] = null!;
+                }
+                if (from == "5") {
+
+                    SLOT = SlotType.WEAPON_SLOT;
+                    Item item = _equippedItems[SLOT];
+                    _backpack[int.Parse(to)] = item;
+                    _equippedItems[SLOT] = null!;
+                }
+                
             }
-            catch (Exception)
+            catch (NullReferenceException)
             {
-
-                throw;
+                Narrator.InvalidChoice();
+                GameLoop.GameDecisions();
             }
         }
 

@@ -12,7 +12,7 @@ namespace ConsoleHeroes.Game.Abstracts.Interfaces
     internal interface ICharacter
     {
         // Necessary
-        protected abstract double Attack(CharacterBase target, double damage);
+        protected abstract double Attack();
         protected abstract double Defend(double incomingDamage);
         protected abstract void Die(string reason);
 

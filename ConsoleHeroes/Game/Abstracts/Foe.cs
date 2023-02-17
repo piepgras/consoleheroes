@@ -9,11 +9,20 @@
         {
         }
 
+        public override double Attack()
+        {
+            throw new NotImplementedException();
+        }
+
         public override void DeathQuote()
         {
             throw new NotImplementedException();
         }
 
+        public override double Defend(double incomingDamage)
+        {
+            throw new NotImplementedException();
+        }
 
         public override void Die(string reason)
         {

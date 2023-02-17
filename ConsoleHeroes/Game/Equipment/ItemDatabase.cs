@@ -11,7 +11,7 @@ namespace ConsoleHeroes.Game.Equipment
     /// Also capable of selecting random items by chance, for loot drops.
     /// Throws item not found exception.
     /// </summary>
-    /// <throws>Exception</throws>
+    /// <throws>Exception(Item not found)</throws>
     internal sealed class ItemDatabase
     {
         private static ItemDatabase instance = null!;
@@ -163,6 +163,9 @@ namespace ConsoleHeroes.Game.Equipment
                 new ItemArmor("Rubber Socks with Toes", 11, 42, new Attributes(12,41,21), ArmorType.PLATE_ARMOR, SlotType.FEET_SLOT ),
                 new ItemArmor("Not Rubber Socks", 42, 152, new Attributes(0,124,0), ArmorType.PLATE_ARMOR, SlotType.FEET_SLOT ),
         };
+
+        public static Item[] Weapons { get { return _weapons; } }
+        public static Item[] Armors { get { return _armors; } }
 
         public static ItemDatabase Instance
         {

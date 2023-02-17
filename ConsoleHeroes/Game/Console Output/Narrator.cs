@@ -1,5 +1,6 @@
 ﻿using ConsoleHeroes.Game.Abstracts;
 using ConsoleHeroes.Game.Enums;
+using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Modifiers;
 using System;
 using System.Collections.Generic;
@@ -292,16 +293,16 @@ namespace ConsoleHeroes.Game.Output
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
             $"Health: {hero.Health}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"Strength: {hero.Attributes.Strength} [Level Gain: + {hero.AttributesGain.Strength}]+" +
+            $"Strength: {hero.Attributes.Strength} [Level Gain: + {hero.AttributesGain.Strength}]" +
             $"   |  With Gear: {hero.getTotalAttributes().Strength}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"Dexterity: {hero.Attributes.Dexterity} [Level Gain: + {hero.AttributesGain.Dexterity}]+" +
+            $"Dexterity: {hero.Attributes.Dexterity} [Level Gain: + {hero.AttributesGain.Dexterity}]" +
             $"   |  With Gear: {hero.getTotalAttributes().Dexterity}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"Strength: {hero.Attributes.Intelligence} [Level Gain: + {hero.AttributesGain.Intelligence}]+" +
+            $"Strength: {hero.Attributes.Intelligence} [Level Gain: + {hero.AttributesGain.Intelligence}]" +
             $"   |  With Gear: {hero.getTotalAttributes().Intelligence}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"[ DAMAGE: ]");
+            $"[ DAMAGE: {hero.Attack()} ]");
 
             DisplayEquipped(hero);
             DisplayBackpack(hero);
@@ -386,13 +387,13 @@ namespace ConsoleHeroes.Game.Output
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
             $"SLOT #1: {slot1}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"SLOT #2: {slot1}");
+            $"SLOT #2: {slot2}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"SLOT #3: {slot1}");
+            $"SLOT #3: {slot3}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"SLOT #4: {slot1}");
+            $"SLOT #4: {slot4}");
             TextController.writeText(0, ConsoleColor.DarkYellow, ConsoleColor.Black,
-            $"SLOT #5: {slot1}");
+            $"SLOT #5: {slot5}");
         }
 
         internal static void NoLoot()
@@ -408,7 +409,7 @@ namespace ConsoleHeroes.Game.Output
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
             $" 0 : FIGHT!    |   1 : Character     |  2 : Equipped");
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
-            $"3 : Backpack  |   4 : Manage Items  |  5 : Restart");
+            $"3 : Backpack  |   4 : Move Item      |  5 : Restart");
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
             $"                  9 : View Cheats                 ");
 
@@ -426,7 +427,9 @@ namespace ConsoleHeroes.Game.Output
             TextController.writeText(0, ConsoleColor.Red, ConsoleColor.White,
             $"");
             TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
-            $" 1 : Gain 100XP  |   2 : Loot Random Item  |  3 : No Cheat");
+            $" 1 : Gain 100XP  |   2 : Loot Random Item  |  3 : Equip   ");
+            TextController.writeText(0, ConsoleColor.White, ConsoleColor.Black,
+            $"                 |   9 : No Cheat          |              ");
 
             return TextController.readText("CHEAT #: ");
         }
@@ -447,6 +450,135 @@ namespace ConsoleHeroes.Game.Output
         {
             TextController.writeText(10, ConsoleColor.Red, ConsoleColor.Black,
             $"You can't equip {item.Name}..");
+        }
+
+        internal static void ItemList()
+        {
+            TextController.writeText(0, ConsoleColor.Red, ConsoleColor.White,
+            $"Force EQUIP item (write CaSeSenSitiVe name): ");
+            
+            foreach(Item item in ItemDatabase.Weapons)
+            {
+                DisplayItem(item);
+            }
+
+            foreach(Item item in ItemDatabase.Armors)
+            {
+                DisplayItem(item);
+            }
+
+        }
+
+        internal static void DisplayItem(Item displayItem)
+        {
+            TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"STATS: {displayItem.Attributes.Strength} {displayItem.Attributes.Dexterity} {displayItem.Attributes.Intelligence}");
+            if (displayItem is ItemArmor)
+            {
+                ItemArmor item = (ItemArmor)displayItem;
+                TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"ARMOR: {item.Name} | LVL:{item.RequiredLevel}");
+                TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"SLOT: {item.SlotType} ARMOR: {item.ArmorType}");
+                TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"");
+            } else
+            {
+                ItemWeapon item = (ItemWeapon)displayItem;
+                TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"{item.Name}: lvl:{item.RequiredLevel}" +
+                $"DAMAGE: {item.Damage}");
+                TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+                $"");
+            }
+        }
+
+        internal static void DisplayOccupiedEquipmentSlots(Inventory inventory)
+        {
+            if (inventory.EquippedItems[SlotType.HEAD_SLOT] != null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #1 : {inventory.EquippedItems[SlotType.HEAD_SLOT].Name}");
+            }
+            if (inventory.EquippedItems[SlotType.CHEST_SLOT] != null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #2 : {inventory.EquippedItems[SlotType.CHEST_SLOT].Name}");
+            }
+            if (inventory.EquippedItems[SlotType.LEGS_SLOT] != null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #3 : {inventory.EquippedItems[SlotType.LEGS_SLOT].Name}");
+            }
+            if (inventory.EquippedItems[SlotType.FEET_SLOT] != null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #4 : {inventory.EquippedItems[SlotType.FEET_SLOT].Name}");
+            }
+            if (inventory.EquippedItems[SlotType.WEAPON_SLOT] != null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #5 : {inventory.EquippedItems[SlotType.WEAPON_SLOT].Name}");
+            }
+        }
+
+        internal static void DisplayEmptyBackpackSlots(Inventory inventory)
+        {
+            if (inventory.Backpack[1] == null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #1 is free.");
+            } else
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #1 {inventory.Backpack[1].Name}");
+            }
+
+            if (inventory.Backpack[2] == null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #2 is free.");
+            } else
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #2 {inventory.Backpack[2].Name}");
+            }
+
+            if (inventory.Backpack[3] == null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #3 is free.");
+            } else
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #3 {inventory.Backpack[3].Name}");
+            }
+
+            if (inventory.Backpack[4] == null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #4 is free.");
+            } else
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #4 {inventory.Backpack[4].Name}");
+            }
+
+            if (inventory.Backpack[5] == null)
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #5 is free.");
+            } else
+            {
+                TextController.writeText(0, ConsoleColor.Blue, ConsoleColor.Black,
+                $"Slot #5 {inventory.Backpack[5].Name}");
+            }
+        }
+
+        internal static void InvalidChoice()
+        {
+            TextController.writeText(0, ConsoleColor.Red, ConsoleColor.Black,
+            $"Invalid SLOT!");
         }
     }
 }

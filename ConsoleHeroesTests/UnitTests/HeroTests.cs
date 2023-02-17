@@ -5,10 +5,11 @@ using ConsoleHeroes.Game.Exceptions;
 using ConsoleHeroes.Game.Modifiers;
 using Xunit;
 
-namespace ConsoleHeroesTests
+namespace ConsoleHeroesTests.UnitTests
 {
     public class HeroTests
     {
+        #region Amazon
         #region Creation
         /// <summary>
         /// Checks if a Amazon Hero is created with the correct fields.
@@ -146,6 +147,10 @@ namespace ConsoleHeroesTests
             Assert.Equal(expected, actual);
         }
 
+        /// <summary>
+        /// Checks if an invalid armor can be equipped and throws exception.
+        /// </summary>
+        /// <exception cref="InvalidArmorException">InvalidArmorException</exception>
         [Fact]
         public void Hero_EquipInvalidArmor_InvalidArmorException()
         {
@@ -154,10 +159,14 @@ namespace ConsoleHeroesTests
             ItemArmor item = (ItemArmor)ItemDatabase.findItem("Store Patter");
 
             // Act & Assert
-            Exception thrownException = sorceror.IsItemAllowed(item);
+            InvalidArmorException thrownException = (InvalidArmorException)sorceror.IsItemAllowed(item);
             Assert.Equal("You can't equip this armor!", thrownException.Message);
         }
 
+        /// <summary>
+        /// Checks if an invalid weapon can be equipped and throws exception.
+        /// </summary>
+        /// <exception cref="InvalidWeaponException">InvalidWeaponException</exception>
         [Fact]
         public void Hero_EquipInvalidWeapon_InvalidWeaponException()
         {
@@ -166,9 +175,10 @@ namespace ConsoleHeroesTests
             Item item = ItemDatabase.findItem("Excalibur");
 
             // Act & Assert
-            Exception thrownException = sorceror.IsItemAllowed(item);
+            InvalidWeaponException thrownException = (InvalidWeaponException)sorceror.IsItemAllowed(item);
             Assert.Equal("You can't equip this weapon!", thrownException.Message);
         }
+        #endregion
         #endregion
     }
 }

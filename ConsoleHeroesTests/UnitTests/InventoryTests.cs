@@ -5,7 +5,7 @@ using ConsoleHeroes.Game.Equipment;
 using ConsoleHeroes.Game.Equipment.Exceptions;
 using System.Drawing;
 
-namespace ConsoleHeroesTests
+namespace ConsoleHeroesTests.UnitTests
 {
     public class InventoryTests
     {
@@ -107,7 +107,7 @@ namespace ConsoleHeroesTests
             bool expected = false;
 
             // Act
-            bool actual = inventory.Equip(item); 
+            bool actual = inventory.Equip(item);
 
             // Assert
             Assert.Equal(expected, actual);

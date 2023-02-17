@@ -11,11 +11,13 @@ namespace ConsoleHeroes.Game.Equipment
     internal class ItemWeapon : Item
     {
         private WeaponType _weaponType;
-        private int _damage;
+        private double _damage;
+
+        public double Damage { get { return _damage; } set { _damage = value; } }
 
         public WeaponType WeaponType { get { return _weaponType; } }
 
-        public ItemWeapon(string name, int requiredLevel, int damage,
+        public ItemWeapon(string name, int requiredLevel, double damage,
                           Attributes attributes, WeaponType weaponType)
                           : base(name, requiredLevel, attributes, SlotType.WEAPON_SLOT)
         {
