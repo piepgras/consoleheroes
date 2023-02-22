@@ -101,12 +101,12 @@ namespace ConsoleHeroes.Game.Abstracts
             }
             // Poor approach to catching Exceptions, but I couldn't figure out how
             // To handle catch(e) in xUnit.
-            catch (InvalidArmorException)
+            catch (InvalidArmorException) // Should give this exception an identifier and get the message from that instead of returning a exception
             {
                 Narrator.EquipNotAllowed(item); 
                 return new InvalidArmorException("You can't equip this armor!");
             }
-            catch (InvalidWeaponException)
+            catch (InvalidWeaponException) // Should give this exception an identifier and get the message from that instead of returning a exception
             { 
                 Narrator.EquipNotAllowed(item);
                 return new InvalidWeaponException("You can't equip this weapon!");
